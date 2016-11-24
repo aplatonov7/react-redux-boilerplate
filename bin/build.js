@@ -16,18 +16,16 @@ mkdir(distPath)
 
 /* Building our project via webpack using prod config */
 webpack(conf, (err, stats) => {
-  if (err) {
-    throw err
-  }
+  if (err) throw err
 
   /* Copying static folder from /app to /dist after successful build */
   cp('-R', appStaticPath, distStaticPath)
 
   process.stdout.write(stats.toString({
-      colors: true,
-      modules: false,
-      children: false,
-      chunks: false,
-      chunkModules: false
-    }) + '\n')
+    colors: true,
+    modules: false,
+    children: false,
+    chunks: false,
+    chunkModules: false,
+  }) + '\n')
 });

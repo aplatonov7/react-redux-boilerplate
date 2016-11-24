@@ -8,6 +8,8 @@
   "scripts": {
     "start": "better-npm-run prod",
     "dev": "better-npm-run dev",
+    "lint": "eslint app",
+    "lint:fix": "npm run lint -- --fix",
     "gen": "babel-node bin/generate-component.js"
   },
   "betterScripts": {
@@ -54,7 +56,13 @@
     "webpack-hot-middleware": "^2.12.1"
   },
   "dependencies": {
+    "babel-eslint": "^7.1.1",
     "classnames": "^2.2.5",
+    "eslint": "^3.10.2",
+    "eslint-config-airbnb": "^13.0.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "^6.7.1",
     "normalize.css": "^4.2.0",
     "react": "^0.14.8",
     "react-dom": "^0.14.7",

@@ -7,10 +7,10 @@ import '../../styles/base.scss'
 
 class App extends Component {
   static propTypes = {
-    store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired //eslint-disable-line
   }
 
-  render () {
+  render() {
     const { store } = this.props
 
     return (

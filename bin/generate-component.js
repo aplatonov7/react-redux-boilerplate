@@ -3,28 +3,21 @@
   Accepts name={component_name} as an argument and optional "container" flag.
 */
 
-import path from 'path'
 import fs from 'fs'
 import mkdirp from 'mkdirp'
+import path from 'path'
 
 const args = process.argv.slice(2)
 
-if (args.length === 0 || !/^name=[a-zA-z]{1,}$/.test(args[0])) throw new Error('You should specify a valid name argument')
+if (args.length === 0 || !/^name=[a-zA-z]{1,}$/.test(args[0])) {
+  throw new Error('You should specify a valid name argument')
+}
 
 const name = process.argv[2].split('=')[1]
 const container = process.argv.includes('container')
 
 const folder = container ? 'containers' : 'components'
-let dest = path.join(__dirname, '../app', folder, name)
-
-const packageFile = `
-{
-  "name": "${name}",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./${name}.js"
-}
-`
+const dest = path.join(__dirname, '../app', folder, name)
 
 const stylesFile = `
 @import '../../styles/variables.scss';
@@ -66,14 +59,10 @@ class ${name} extends Component {
 export default ${name}
 `
 
-mkdirp(dest, err => {
+/* eslint-disable no-console */
+mkdirp(dest, (err) => {
   if (err) throw new Error(err)
   else console.log(`Created directory ${dest}`)
-})
-
-fs.writeFile(path.join(dest, 'package.json'), packageFile.trim(), (err) => {
-  if (err) throw new Error(err)
-  console.log('Generated package.json file')
 })
 
 if (!container) {
@@ -82,12 +71,12 @@ if (!container) {
     console.log(`Generated ${name}.scss file`)
   })
 
-  fs.writeFile(path.join(dest, `${name}.js`), componentFile.trim(), (err) => {
+  fs.writeFile(path.join(dest, 'index.js'), componentFile.trim(), (err) => {
     if (err) throw new Error(err)
     console.log(`Generated ${name}.js file`)
   })
 } else {
-  fs.writeFile(path.join(dest, `${name}.js`), containerFile.trim(), (err) => {
+  fs.writeFile(path.join(dest, 'index.js'), containerFile.trim(), (err) => {
     if (err) throw new Error(err)
     console.log(`Generated ${name}.js file`)
   })
