@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'development') {
     stats: {
       colors: true,
     },
-  }));
+  }))
 
   router.use(require('webpack-hot-middleware')(compiler))
 }

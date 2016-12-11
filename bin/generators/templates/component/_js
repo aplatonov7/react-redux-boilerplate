@@ -1,0 +1,14 @@
+import React, { PropTypes } from 'react'
+import s from './{name}.scss'
+
+const {name} = () => (
+  <div className={s.root}>
+
+  </div>
+)
+
+{name}.propTypes = {
+
+}
+
+export default {name}
