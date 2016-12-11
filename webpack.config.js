@@ -80,6 +80,9 @@ module.exports = (env) => {
               browsers: ['> 1%'],
             })]
           },
+          sassLoader: {
+            includePaths: [path.resolve(__dirname, 'app/styles')],
+          },
         },
       }),
       dev(new webpack.HotModuleReplacementPlugin()),
