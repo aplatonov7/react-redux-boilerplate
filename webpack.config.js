@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
-const precss = require('precss')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const cssBundle = new ExtractTextPlugin({ filename: 'styles.css', allChunks: true })
@@ -80,7 +79,7 @@ module.exports = (env) => {
           postcss() {
             return [autoprefixer({
               browsers: ['> 1%'],
-            }), precss];
+            })]
           },
         },
       }),
