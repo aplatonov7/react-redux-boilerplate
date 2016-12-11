@@ -14,7 +14,6 @@ module.exports = (env) => {
   return {
     devtool: env.dev ? 'cheap-module-eval-source-map' : false,
     entry: clean([
-      'babel-polyfill',
       dev('webpack-hot-middleware/client'),
       path.join(__dirname, 'app/index.js'),
     ]),
@@ -38,7 +37,7 @@ module.exports = (env) => {
           ],
         }),
         prod({
-          test: /\.scss$/,
+          test: /\.s?css$/,
           exclude: /node_modules/,
           loaders: cssBundle.extract([
             `css?modules&importLoaders=1&localIdentName=${
