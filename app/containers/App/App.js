@@ -11,10 +11,9 @@ class App extends Component {
   }
 
   render() {
-    const { store } = this.props
     return (
-      <Provider store={store}>
-        <Router routes={Routes(store)} history={browserHistory} />
+      <Provider store={this.props.store}>
+        <Router routes={Routes(this.props.store)} history={browserHistory} />
       </Provider>
     )
   }

@@ -5,7 +5,6 @@ import Navigation from '../Navigation'
 const Layout = ({ children }) => (
   <div className={s.root}>
     <Navigation />
-
     {children}
   </div>
 )
