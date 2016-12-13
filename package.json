@@ -50,7 +50,6 @@
     "redux-form": "^5.3.1",
     "redux-logger": "^2.7.4",
     "redux-saga": "^0.13.0",
-    "redux-thunk": "^2.1.0",
     "sass-loader": "^4.0.0",
     "shelljs": "^0.7.1",
     "style-loader": "^0.13.0",
