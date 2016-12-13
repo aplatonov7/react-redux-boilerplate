@@ -14,6 +14,7 @@ module.exports = (env) => {
   return {
     devtool: env.dev ? 'cheap-module-eval-source-map' : false,
     entry: clean([
+      'babel-polyfill',
       dev('webpack-hot-middleware/client'),
       path.join(__dirname, 'app/index.js'),
     ]),

@@ -6,20 +6,21 @@ import Counter from '../../components/Counter'
 
 class CounterContainer extends Component {
   static propTypes = {
-    incrementCounter: PropTypes.func,
-    resetCounter: PropTypes.func,
+    increment: PropTypes.func,
+    incrementAsync: PropTypes.func,
+    reset: PropTypes.func,
     value: PropTypes.number,
   }
 
-  incrementByOne = () => this.props.incrementCounter(1)
-  incrementByThree = () => this.props.incrementCounter(3)
-  reset = () => this.props.resetCounter()
+  incrementByOne = () => this.props.increment(1)
+  incrementByOneAync = () => this.props.incrementAsync(1)
+  reset = () => this.props.reset()
 
   render() {
     return (
       <Counter
         incrementByOne={this.incrementByOne}
-        incrementByThree={this.incrementByThree}
+        incrementByOneAync={this.incrementByOneAync}
         reset={this.reset}
         value={this.props.value}
       />

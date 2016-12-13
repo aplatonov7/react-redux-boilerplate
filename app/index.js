@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import App from './containers/App'
-import configureStore from './redux/configureStore'
+import configureStore from './redux/_configureStore'
 
 /* Setting up the app store and rendering our root container into DOM */
 const store = configureStore()
