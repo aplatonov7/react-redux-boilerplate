@@ -2,7 +2,7 @@ import { delay, takeLatest } from 'redux-saga'
 import { call, put } from 'redux-saga/effects'
 import { actions, types } from '../redux/counter'
 
-function* incrementAsync(action) {
+export function* incrementAsync(action) {
   yield call(delay, 1000, null)
   yield put(actions.increment(action.payload))
 }

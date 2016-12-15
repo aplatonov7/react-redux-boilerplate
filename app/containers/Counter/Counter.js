@@ -4,7 +4,7 @@ import { actions, selectCounter } from '../../redux/counter'
 
 import Counter from '../../components/Counter'
 
-class CounterContainer extends Component {
+export class CounterContainer extends Component {
   static propTypes = {
     increment: PropTypes.func,
     incrementAsync: PropTypes.func,
@@ -14,14 +14,13 @@ class CounterContainer extends Component {
 
   incrementByOne = () => this.props.increment(1)
   incrementByOneAync = () => this.props.incrementAsync(1)
-  reset = () => this.props.reset()
 
   render() {
     return (
       <Counter
         incrementByOne={this.incrementByOne}
         incrementByOneAync={this.incrementByOneAync}
-        reset={this.reset}
+        reset={this.props.reset}
         value={this.props.value}
       />
     )
