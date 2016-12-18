@@ -1,0 +1,9 @@
+exports[`Layout component should match snapshot 1`] = `
+<div
+  className="root">
+  <Navigation />
+  <div>
+    child
+  </div>
+</div>
+`;

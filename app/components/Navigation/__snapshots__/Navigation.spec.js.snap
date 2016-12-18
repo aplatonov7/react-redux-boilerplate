@@ -1,0 +1,17 @@
+exports[`Navigation component should match snapshot 1`] = `
+<nav
+  className="root">
+  <a
+    className="link"
+    onClick={[Function]}
+    style={Object {}}>
+    Home
+  </a>
+  <a
+    className="link"
+    onClick={[Function]}
+    style={Object {}}>
+    Counter
+  </a>
+</nav>
+`;

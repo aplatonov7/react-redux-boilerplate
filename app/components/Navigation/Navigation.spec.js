@@ -1,11 +1,11 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 import Navigation from './'
 
-describe('Navigation component test', () => {
-  const item = shallow(<Navigation />)
+describe('Navigation component', () => {
+  const item = renderer.create(<Navigation />)
 
-  it('Should render nav as root element', () => {
-    expect(item.find('nav.root').length).toBe(1)
+  it('should match snapshot', () => {
+    expect(item.toJSON()).toMatchSnapshot()
   })
 })

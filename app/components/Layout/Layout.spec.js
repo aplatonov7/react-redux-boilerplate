@@ -1,17 +1,13 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import Layout from './Layout'
-import Navigation from '../Navigation'
+import renderer from 'react-test-renderer'
+import Layout from './'
 
-describe('Layout component test', () => {
-  const child = <div className="test" />
-  const item = shallow(<Layout>{child}</Layout>)
+jest.mock('../Navigation', () => 'Navigation')
 
-  it('Should render Navigation', () => {
-    expect(item.find(Navigation).length).toBe(1)
-  })
+describe('Layout component', () => {
+  const item = renderer.create(<Layout><div>child</div></Layout>)
 
-  it('Should render children', () => {
-    expect(item.contains(child)).toBe(true)
+  it('should match snapshot', () => {
+    expect(item.toJSON()).toMatchSnapshot()
   })
 })
