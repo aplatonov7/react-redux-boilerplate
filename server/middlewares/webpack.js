@@ -1,4 +1,3 @@
-import path from 'path'
 import express from 'express'
 
 const router = express.Router()
@@ -14,21 +13,11 @@ if (process.env.NODE_ENV === 'development') {
     stats: {
       colors: true,
     },
+    serverSideRender: true,
   })
-  const fs = webpackDevMiddleware.fileSystem
 
   router.use(webpackDevMiddleware)
   router.use(require('webpack-hot-middleware')(compiler))
-
-  router.get('*', (req, res) => {
-    fs.readFile(path.join(compiler.outputPath, 'index.html'), (err, file) => {
-      if (err) {
-        res.sendStatus(500)
-      } else {
-        res.send(file.toString())
-      }
-    })
-  })
 }
 /* eslint-enable global-require */
 

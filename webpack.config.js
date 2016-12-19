@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -26,8 +25,7 @@ module.exports = (env) => {
     module: {
       loaders: clean([
         dev({
-          test: /\.scss$/,
-          exclude: /node_modules/,
+          test: /\.s?css$/,
           loaders: [
             'style',
             `css?modules&importLoaders=1&localIdentName=${
@@ -64,16 +62,6 @@ module.exports = (env) => {
       }),
       prod(cssBundle),
       prod(new webpack.optimize.DedupePlugin()),
-      new HtmlWebpackPlugin({
-        template: 'app/index.html',
-        filename: 'index.html',
-        inject: 'body',
-        minify: env.prod ? {
-          removeComments: true,
-          collapseWhitespace: true,
-          removeAttributeQuotes: true,
-        } : undefined,
-      }),
       new webpack.LoaderOptionsPlugin({
         options: {
           postcss() {

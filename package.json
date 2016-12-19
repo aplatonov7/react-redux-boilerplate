@@ -7,7 +7,7 @@
   "main": "server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=production HOST=0.0.0.0 babel-node ./bin/build.js && babel-node server",
-    "dev": "cross-env NODE_ENV=development nodemon -i app -x babel-node server",
+    "dev": "cross-env NODE_ENV=development nodemon -i app -x babel-node ./bin/start",
     "lint": "eslint app",
     "lint:fix": "npm run lint -- --fix",
     "create-component": "babel-node bin/generators/component",
@@ -36,6 +36,7 @@
     "classnames": "^2.2.5",
     "cross-env": "^3.1.3",
     "css-loader": "^0.23.1",
+    "css-modules-require-hook": "^4.0.5",
     "enzyme": "^2.6.0",
     "eslint": "^3.10.2",
     "eslint-config-airbnb": "^13.0.0",

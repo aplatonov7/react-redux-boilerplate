@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
+import 'normalize.css'
 import s from './Layout.scss'
+import '../../styles/base.scss'
 import Navigation from '../Navigation'
 
 const Layout = ({ children }) => (

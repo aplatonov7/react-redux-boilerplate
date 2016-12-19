@@ -4,8 +4,10 @@ import App from './components/App'
 import configureStore from './redux/_configureStore'
 import rootSaga from './sagas/_rootSaga'
 
-const store = configureStore()
+const initialState = window.__INITIAL_STATE__ ? window.__INITIAL_STATE__ : {}
+const store = configureStore(initialState)
 store.runSaga(rootSaga)
+
 const rootEl = document.getElementById('app')
 
 if (module.hot) {

@@ -1,0 +1,56 @@
+exports[`Html container should match snapshot 1`] = `
+<html
+  lang="en">
+  <head>
+    <meta
+      charSet="UTF-8" />
+    <meta
+      content="width=device-width, initial-scale=1.0"
+      name="viewport" />
+    <meta
+      content="ie=edge"
+      httpEquiv="X-UA-Compatible" />
+    <title>
+      My React-Redux app
+    </title>
+    <link
+      href="test-style"
+      rel="stylesheet" />
+    <link
+      href="test-style2"
+      rel="stylesheet" />
+    <style
+      id="SSRStyles"
+      type="text/css">
+      inline styles
+    </style>
+    <script
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "
+                  window.__INITIAL_STATE__ = {\"test\":1}
+                  window.__CLIENT__ = true
+                ",
+        }
+      } />
+  </head>
+  <body>
+    <div
+      id="app">
+      <div>
+        child
+      </div>
+    </div>
+    <script
+      src="test-script" />
+    <script
+      src="test-script2" />
+    <script
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "document.getElementById(\"SSRStyles\").remove()",
+        }
+      } />
+  </body>
+</html>
+`;
