@@ -15,3 +15,4 @@ const dest = path.join(__dirname, '../../app', 'containers', folders, name)
 
 createFromTemplate('container/_js', { name }, dest, `${name}.js`)
 createFromTemplate('container/_package', { name }, dest, 'package.json')
+createFromTemplate('container/_test', { name }, dest, `${name}.spec.js`)
