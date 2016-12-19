@@ -4,7 +4,6 @@ import App from './components/App'
 import configureStore from './redux/_configureStore'
 import rootSaga from './sagas/_rootSaga'
 
-/* Setting up the app store and rendering our root container into DOM */
 const store = configureStore()
 store.runSaga(rootSaga)
 const rootEl = document.getElementById('app')

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { CounterContainer } from './'
 import CounterComponent from '../../components/Counter'
 
-describe('Counter container test', () => {
+describe('Counter container', () => {
   const props = {
     increment: jest.fn(),
     incrementAsync: jest.fn(),
@@ -12,7 +12,7 @@ describe('Counter container test', () => {
   }
   const item = shallow(<CounterContainer {...props} />)
 
-  it('Should render Counter component with valid props', () => {
+  it('should render Counter component with valid props', () => {
     const counter = item.find(CounterComponent)
     expect(counter.length).toBe(1)
     const counterProps = counter.props()
