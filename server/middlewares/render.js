@@ -8,6 +8,9 @@ import { purgeCache } from '../utils'
 const router = express.Router()
 
 router.get('*', (req, res) => {
+  let scripts = []
+  let styles = []
+
   if (process.env.NODE_ENV === 'development') {
     [
       '../../app/redux/_configureStore',
@@ -15,6 +18,14 @@ router.get('*', (req, res) => {
       '../../app/routes',
       '../../app/components/Html',
     ].forEach(purgeCache)
+
+    let mainChunk = res.locals.webpackStats.toJson().assetsByChunkName.main
+    if (!Array.isArray(mainChunk)) mainChunk = [mainChunk]
+    scripts = scripts.concat(mainChunk.filter(e => e.slice(-3) === '.js'))
+    styles = styles.concat(mainChunk.filter(e => e.slice(-4) === '.css'))
+  } else {
+    scripts = ['main.js']
+    styles = ['styles.css']
   }
 
   /* eslint-disable global-require */
@@ -27,11 +38,6 @@ router.get('*', (req, res) => {
   const store = configureStore()
   store.runSaga(rootSaga)
 
-  let mainChunk = res.locals.webpackStats.toJson().assetsByChunkName.main
-  if (!Array.isArray(mainChunk)) mainChunk = [mainChunk]
-  const scripts = mainChunk.filter(e => e.slice(-3) === '.js')
-  const styles = mainChunk.filter(e => e.slice(-4) === '.css')
-
   match({ routes: routes(store), location: req.url }, (err, redirectLocation, renderProps) => {
     if (err) {
       res.status(500).send(err.message)
@@ -39,7 +45,7 @@ router.get('*', (req, res) => {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
       const state = store.getState()
-      const inlineCss = process.env.NODE_ENV === 'development' ? global.inlineCss : null
+      const inlineCss = global.inlineCss
       const html = renderToStaticMarkup((
         <Html initialState={state} scripts={scripts} styles={styles} inlineStyles={inlineCss}>
           <Provider store={store}>

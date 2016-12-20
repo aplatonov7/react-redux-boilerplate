@@ -5,7 +5,7 @@
   "author": "Artem Platonov",
   "license": "ISC",
   "scripts": {
-    "start": "cross-env NODE_ENV=production HOST=0.0.0.0 babel-node ./bin/build.js && babel-node server",
+    "start": "cross-env NODE_ENV=production babel-node ./bin/start",
     "dev": "cross-env NODE_ENV=development nodemon -i app -x babel-node ./bin/start",
     "lint": "eslint app",
     "lint:fix": "npm run lint -- --fix",

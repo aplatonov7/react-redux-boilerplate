@@ -14,10 +14,10 @@ exports[`Html container should match snapshot 1`] = `
       My React-Redux app
     </title>
     <link
-      href="test-style"
+      href="/test-style"
       rel="stylesheet" />
     <link
-      href="test-style2"
+      href="/test-style2"
       rel="stylesheet" />
     <style
       id="SSRStyles"
@@ -42,9 +42,9 @@ exports[`Html container should match snapshot 1`] = `
       </div>
     </div>
     <script
-      src="test-script" />
+      src="/test-script" />
     <script
-      src="test-script2" />
+      src="/test-script2" />
     <script
       dangerouslySetInnerHTML={
         Object {

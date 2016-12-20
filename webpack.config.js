@@ -1,14 +1,25 @@
-const path = require('path')
-const webpack = require('webpack')
-const autoprefixer = require('autoprefixer')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+import path from 'path'
+import webpack from 'webpack'
+import autoprefixer from 'autoprefixer'
+import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 const cssBundle = new ExtractTextPlugin({ filename: 'styles.css', allChunks: true })
 
-module.exports = (env) => {
+export const dist = path.join(__dirname, 'dist')
+
+export default (env) => {
   const dev = p => (env.dev ? p : null)
   const prod = p => (env.prod ? p : null)
   const clean = arr => arr.filter(e => !!e)
+
+  const cssLoader = clean([
+    dev('style'),
+    `css?modules&importLoaders=1&localIdentName=${
+      env.dev ? '[name]__[local]' : '[hash:base64:5]'
+    }`,
+    'postcss',
+    'sass',
+  ])
 
   return {
     devtool: env.dev ? 'cheap-module-eval-source-map' : false,
@@ -18,34 +29,16 @@ module.exports = (env) => {
       path.join(__dirname, 'app/index.js'),
     ]),
     output: {
-      path: path.join(__dirname, 'dist'),
-      filename: 'bundle.js',
+      path: dist,
+      filename: 'main.js',
       publicPath: '/',
     },
     module: {
       loaders: clean([
-        dev({
+        {
           test: /\.s?css$/,
-          loaders: [
-            'style',
-            `css?modules&importLoaders=1&localIdentName=${
-              env.dev ? '[name]__[local]' : '[hash:base64:5]'
-            }`,
-            'postcss',
-            'sass',
-          ],
-        }),
-        prod({
-          test: /\.s?css$/,
-          exclude: /node_modules/,
-          loaders: cssBundle.extract([
-            `css?modules&importLoaders=1&localIdentName=${
-              env.dev ? '[name]__[local]' : '[hash:base64:5]'
-            }`,
-            'postcss',
-            'sass',
-          ]),
-        }),
+          loaders: env.dev ? cssLoader : cssBundle.extract(cssLoader),
+        },
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,

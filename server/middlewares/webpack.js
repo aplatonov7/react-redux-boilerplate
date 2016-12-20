@@ -4,7 +4,7 @@ const router = express.Router()
 
 /* eslint-disable global-require */
 if (process.env.NODE_ENV === 'development') {
-  const config = require('../../webpack.config')({ dev: true })
+  const config = require('../../webpack.config').default({ dev: true })
   const webpack = require('webpack')
   const compiler = webpack(config)
   const webpackDevMiddleware = require('webpack-dev-middleware')(compiler, {
