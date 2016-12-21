@@ -16,7 +16,7 @@ export default (env) => {
     dev('style'),
     `css?modules&importLoaders=1&localIdentName=${
       env.dev ? '[name]__[local]' : '[hash:base64:5]'
-    }`,
+    }&minimize=${!!env.prod}`,
     'postcss',
     'sass',
   ])
