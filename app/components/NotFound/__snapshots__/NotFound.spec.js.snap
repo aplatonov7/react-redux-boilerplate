@@ -1,6 +1,5 @@
 exports[`NotFound component should match snapshot 1`] = `
-<div
-  className="root">
+<div>
   Not Found
 </div>
 `;

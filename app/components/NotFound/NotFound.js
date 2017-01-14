@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react'
-import s from './NotFound.scss'
 
 const NotFound = () => (
-  <div className={s.root}>
+  <div>
     Not Found
   </div>
 )

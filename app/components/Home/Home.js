@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react'
-import s from './Home.scss'
 
 const Home = () => (
-  <div className={s.root}>
+  <div>
     Yep, it works
   </div>
 )

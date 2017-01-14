@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 
+/* eslint react/no-danger: 0 */
 const Html = ({ children, initialState = {}, scripts, styles, inlineStyles }) => (
   <html lang="en">
     <head>
